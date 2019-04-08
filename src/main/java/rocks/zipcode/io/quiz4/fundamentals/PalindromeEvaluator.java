@@ -7,25 +7,15 @@ import java.util.*;
  */
 public class PalindromeEvaluator {
     public static String[] getAllPalindromes(String string) {
-        ArrayList<String> substrings = getAllSubstrings(string);
-        Set<String> palindromesUnique = new LinkedHashSet<>();
-        for (int i = 0; i < substrings.size(); i++) {
-            if (isPalindrome(substrings.get(i))) {
-                palindromesUnique.add(substrings.get(i));
+        String[] substrings = StringEvaluator.getAllSubstrings(string);
+        List<String> palindromesList = new ArrayList<>();
+        for (int i = 0; i < substrings.length; i++) {
+            if (isPalindrome(substrings[i])) {
+                palindromesList.add(substrings[i]);
             }
         }
-        String[] palindromes = new String[palindromesUnique.size()];
-        return palindromesUnique.toArray(palindromes);
-    }
-
-    public static ArrayList<String> getAllSubstrings(String string) {
-        ArrayList<String> substrings = new ArrayList<>();
-        for (int i = 0; i < string.length(); i++) {
-            for (int j = i+1; j <= string.length(); j++) {
-                substrings.add(string.substring(i, j));
-            }
-        }
-        return substrings;
+        String[] palindromes = new String[palindromesList.size()];
+        return palindromesList.toArray(palindromes);
     }
 
     public static Boolean isPalindrome(String string) {
